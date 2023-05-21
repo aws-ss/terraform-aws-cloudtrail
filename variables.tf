@@ -82,8 +82,14 @@ variable "insight_selector" {
   default     = null
 }
 
-variable "event_selector" {
-  description = "(Optional) Specifies an event selector for enabling data event logging."
+#variable "event_selector" {
+#  description = "(Optional) Specifies an event selector for enabling data event logging."
+#  type        = any
+#  default     = null
+#}
+
+variable "advanced_event_selector" {
+  description = "(Optional) Specifies an advanced event selector for enabling data event logging."
   type        = any
   default     = null
 }

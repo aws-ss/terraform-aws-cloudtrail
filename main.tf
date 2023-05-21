@@ -22,19 +22,44 @@ resource "aws_cloudtrail" "this" {
     }
   }
 
-  dynamic "event_selector" {
-    for_each = var.event_selector == null ? [] : [1]
+  #  dynamic "event_selector" {
+  #    for_each = var.event_selector == null ? [] : [1]
+  #
+  #    content {
+  #      read_write_type                  = var.event_selector.read_write_type == null ? "All" : var.event_selector.read_write_type
+  #      include_management_events        = var.event_selector.include_management_events == null ? true : var.event_selector.include_management_events
+  #      exclude_management_event_sources = var.event_selector.exclude_management_event_sources == null ? [] : var.event_selector.exclude_management_event_sources
+  #
+  #      dynamic "data_resource" {
+  #        for_each = lookup(var.event_selector, "data_resource", null) == null ? [] : [lookup(var.event_selector, "data_resource")]
+  #        content {
+  #          type   = lookup(data_resource.value, "type")
+  #          values = lookup(data_resource.value, "values")
+  #        }
+  #      }
+  #    }
+  #  }
+
+  dynamic "advanced_event_selector" {
+    for_each = var.advanced_event_selector == null ? [] : var.advanced_event_selector
+    iterator = advanced_event_selector
 
     content {
-      read_write_type                  = var.event_selector.read_write_type == null ? "All" : var.event_selector.read_write_type
-      include_management_events        = var.event_selector.include_management_events == null ? true : var.event_selector.include_management_events
-      exclude_management_event_sources = var.event_selector.exclude_management_event_sources == null ? [] : var.event_selector.exclude_management_event_sources
+      name = lookup(advanced_event_selector.value, "name")
 
-      dynamic "data_resource" {
-        for_each = lookup(var.event_selector, "data_resource", null) == null ? [] : [lookup(var.event_selector, "data_resource")]
+      dynamic "field_selector" {
+        for_each = lookup(advanced_event_selector.value, "field_selector") == null ? [] : lookup(advanced_event_selector.value, "field_selector")
+        iterator = field_selector
+
         content {
-          type   = lookup(data_resource.value, "type")
-          values = lookup(data_resource.value, "values")
+          field = lookup(field_selector.value, "field")
+
+          ends_with       = lookup(field_selector.value, "ends_with", null) != null ? lookup(field_selector.value, "ends_with") : null
+          equals          = lookup(field_selector.value, "equals", null) != null ? lookup(field_selector.value, "equals") : null
+          not_ends_with   = lookup(field_selector.value, "not_ends_with", null) != null ? lookup(field_selector.value, "not_ends_with") : null
+          not_equals      = lookup(field_selector.value, "not_equals", null) != null ? lookup(field_selector.value, "not_equals") : null
+          not_starts_with = lookup(field_selector.value, "not_starts_with", null) != null ? lookup(field_selector.value, "not_starts_with") : null
+          starts_with     = lookup(field_selector.value, "starts_with", null) != null ? lookup(field_selector.value, "starts_with") : null
         }
       }
     }
