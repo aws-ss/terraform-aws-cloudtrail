@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.1](https://github.com/aws-ss/terraform-aws-cloudtrail/compare/v1.0.0...v1.0.1) (2023-05-21)
+
+
+### Bug Fixes
+
+* Renamed .pre-commit-config.yaml because of InvalidConfigError ([98f1876](https://github.com/aws-ss/terraform-aws-cloudtrail/commit/98f187630b6e292aedf1e7e0f9433fb799d3f6dc))
+
 ## 1.0.0 (2023-04-08)
 
 
