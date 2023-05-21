@@ -3,10 +3,10 @@ provider "aws" {
 }
 
 module "cloudtrail" {
-  source = "..//"
+  source = "../..//"
 
-  name           = "TEST01"
-  s3_bucket_name = "aws-cloudtrail-logs-362252864672-5f4dec40"
+  name           = "CloudTrail01"
+  s3_bucket_name = "cloudtrail-logs-123456789012"
   enable_logging = true
   insight_selector = {
     ApiCallRateInsight : true

@@ -7,3 +7,5 @@ $ terraform init
 $ terraform plan
 $ terraform apply
 ```
+
+**_NOTE:_**  S3 bucket must have been created.
