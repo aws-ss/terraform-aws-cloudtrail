@@ -1,6 +1,11 @@
 # terraform-aws-cloudtrail
 
-A Terraform module that creates an AWS CloudTrail
+A Terraform module that creates AWS CloudTrail.
+
+## Available Features
+
+- Advanced Event Selector
+- Event Selector
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
