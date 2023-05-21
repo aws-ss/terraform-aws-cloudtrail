@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0](https://github.com/aws-ss/terraform-aws-cloudtrail/compare/v1.0.1...v2.0.0) (2023-05-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Change event selector to AdvancedEventSelector
+
+### Features
+
+* Change event selector to AdvancedEventSelector ([d8e08a8](https://github.com/aws-ss/terraform-aws-cloudtrail/commit/d8e08a8de098ccefd75b85b4856703144af3c7c4))
+
 ### [1.0.1](https://github.com/aws-ss/terraform-aws-cloudtrail/compare/v1.0.0...v1.0.1) (2023-05-21)
 
 
