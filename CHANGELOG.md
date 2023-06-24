@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.0.2](https://github.com/aws-ss/terraform-aws-cloudtrail/compare/v2.0.1...v2.0.2) (2023-06-24)
+
+
+### Bug Fixes
+
+* true or false result expressions must have consistent types ([353651c](https://github.com/aws-ss/terraform-aws-cloudtrail/commit/353651c2ebca8330e97b0998e24e878d31af8c9e))
+
 ### [2.0.1](https://github.com/aws-ss/terraform-aws-cloudtrail/compare/v2.0.0...v2.0.1) (2023-05-29)
 
 
