@@ -41,25 +41,25 @@ resource "aws_cloudtrail" "this" {
   #  }
 
   dynamic "advanced_event_selector" {
-    for_each = var.advanced_event_selector == null ? [] : var.advanced_event_selector
+    for_each = var.advanced_event_selector == null ? null : var.advanced_event_selector
     iterator = advanced_event_selector
 
     content {
       name = lookup(advanced_event_selector.value, "name")
 
       dynamic "field_selector" {
-        for_each = lookup(advanced_event_selector.value, "field_selector") == null ? [] : lookup(advanced_event_selector.value, "field_selector")
+        for_each = lookup(advanced_event_selector.value, "field_selector", null) == null ? null : lookup(advanced_event_selector.value, "field_selector")
         iterator = field_selector
 
         content {
           field = lookup(field_selector.value, "field")
 
-          ends_with       = lookup(field_selector.value, "ends_with", null) != null ? lookup(field_selector.value, "ends_with") : null
-          equals          = lookup(field_selector.value, "equals", null) != null ? lookup(field_selector.value, "equals") : null
-          not_ends_with   = lookup(field_selector.value, "not_ends_with", null) != null ? lookup(field_selector.value, "not_ends_with") : null
-          not_equals      = lookup(field_selector.value, "not_equals", null) != null ? lookup(field_selector.value, "not_equals") : null
-          not_starts_with = lookup(field_selector.value, "not_starts_with", null) != null ? lookup(field_selector.value, "not_starts_with") : null
-          starts_with     = lookup(field_selector.value, "starts_with", null) != null ? lookup(field_selector.value, "starts_with") : null
+          ends_with       = lookup(field_selector.value, "ends_with", null) == null ? null : lookup(field_selector.value, "ends_with")
+          equals          = lookup(field_selector.value, "equals", null) == null ? null : lookup(field_selector.value, "equals")
+          not_ends_with   = lookup(field_selector.value, "not_ends_with", null) == null ? null : lookup(field_selector.value, "not_ends_with")
+          not_equals      = lookup(field_selector.value, "not_equals", null) == null ? null : lookup(field_selector.value, "not_equals")
+          not_starts_with = lookup(field_selector.value, "not_starts_with", null) == null ? null : lookup(field_selector.value, "not_starts_with")
+          starts_with     = lookup(field_selector.value, "starts_with", null) == null ? null : lookup(field_selector.value, "starts_with")
         }
       }
     }
