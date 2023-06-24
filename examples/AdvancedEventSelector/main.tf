@@ -8,7 +8,7 @@ module "cloudtrail" {
   source = "../..//"
 
   name           = "CloudTrail01"
-  s3_bucket_name = "cloudtrail-logs-123456789012"
+  s3_bucket_name = "aws-cloudtrail-logs-362252864672-5f4dec40"
   enable_logging = true
   insight_selector = {
     ApiCallRateInsight : true
@@ -16,34 +16,28 @@ module "cloudtrail" {
   }
   advanced_event_selector = [
     {
-      name = "Advanced Event Selector 01"
-
+      name = "Advanced Event Selector"
       field_selector = [
         {
-          field  = "resources.type"
-          equals = ["AWS::GuardDuty::Detector"]
+          field  = "eventCategory"
+          equals = ["Management"]
         },
         {
-          field  = "eventCategory"
-          equals = ["Data"]
+          field      = "eventSource"
+          not_equals = ["kms.amazonaws.com", "rdsdata.amazonaws.com"]
         }
       ]
     },
     {
-      name = "Advanced Event Selector 02"
-
+      name = "Advanced Event Selector"
       field_selector = [
-        {
-          field  = "resources.type"
-          equals = ["AWS::S3::Object"]
-        },
-        {
-          field  = "readOnly"
-          equals = ["true"]
-        },
         {
           field  = "eventCategory"
           equals = ["Data"]
+        },
+        {
+          field  = "resources.type"
+          equals = ["AWS::S3::Object"]
         }
       ]
     },
