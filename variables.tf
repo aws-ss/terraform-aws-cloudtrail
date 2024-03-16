@@ -19,7 +19,7 @@ variable "enable_logging" {
 variable "enable_log_file_validation" {
   description = "(Optional) Whether log file integrity validation is enabled. Defaults to false."
   type        = bool
-  default     = null
+  default     = true
 }
 
 variable "sns_topic_name" {
@@ -31,7 +31,7 @@ variable "sns_topic_name" {
 variable "is_multi_region_trail" {
   description = "(Optional) Whether the trail is created in the current region or in all regions. Defaults to false."
   type        = bool
-  default     = null
+  default     = true
 }
 
 variable "include_global_service_events" {
