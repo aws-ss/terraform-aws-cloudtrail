@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0](https://github.com/aws-ss/terraform-aws-cloudtrail/compare/v2.0.2...v2.1.0) (2025-04-30)
+
+
+### Features
+
+* Update providers version 5.4.0 to 5.96.0 ([5a1ee59](https://github.com/aws-ss/terraform-aws-cloudtrail/commit/5a1ee5937d2cbfb4e5168777a2b97d3ade3a0b9e))
+
 ### [2.0.2](https://github.com/aws-ss/terraform-aws-cloudtrail/compare/v2.0.1...v2.0.2) (2023-06-24)
 
 
