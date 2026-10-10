@@ -5,24 +5,41 @@ provider "aws" {
 module "cloudtrail" {
   source = "../..//"
 
-  name           = "CloudTrail01"
-  s3_bucket_name = "cloudtrail-logs-123456789012"
-  enable_logging = true
-  insight_selector = {
-    ApiCallRateInsight : true
-    ApiErrorRateInsight : true
-  }
-  event_selector = {
-    read_write_type : "All"
-    include_management_events : true
-    exclude_management_event_sources : ["kms.amazonaws.com"]
-    data_resource : {
-      type : "AWS::S3::Object"
-      values : ["arn:aws:s3"]
+  name             = "amzn-demo-trails"
+  s3_bucket_name   = "amzn-s3-demo-bucket"
+  enable_logging   = true
+  insight_selector = ["ApiCallRateInsight", "ApiErrorRateInsight"]
+  event_selector = [
+    {
+      read_write_type                  = "All"
+      include_management_events        = true
+      exclude_management_event_sources = ["kms.amazonaws.com"]
+      data_resource = [
+        {
+          type   = "AWS::S3::Object"
+          values = ["arn:aws:s3"]
+        }
+      ]
+    },
+    {
+      read_write_type           = "WriteOnly"
+      include_management_events = false
+      data_resource = [
+        {
+          type   = "AWS::Lambda::Function"
+          values = ["arn:aws:lambda"]
+        }
+      ]
+    },
+    {
+      read_write_type           = "ReadOnly"
+      include_management_events = false
+      data_resource = [
+        {
+          type   = "AWS::DynamoDB::Table"
+          values = ["arn:aws:dynamodb"]
+        }
+      ]
     }
-  }
-  tags = {
-    Team : "Security"
-    Owner : "Security"
-  }
+  ]
 }

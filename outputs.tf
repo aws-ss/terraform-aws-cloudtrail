@@ -1,19 +1,24 @@
-output "aws_cloudtrail_arn" {
+output "arn" {
   description = "ARN of the trail."
   value       = aws_cloudtrail.this.arn
 }
 
-output "aws_cloudtrail_home_region" {
+output "home_region" {
   description = "Region in which the trail was created."
   value       = aws_cloudtrail.this.home_region
 }
 
-output "aws_cloudtrail_id" {
-  description = "Name of the trail."
+output "id" {
+  description = "ARN of the trail."
   value       = aws_cloudtrail.this.id
 }
 
-output "aws_cloudtrail_tags_all" {
+output "sns_topic_arn" {
+  description = "ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered."
+  value       = aws_cloudtrail.this.sns_topic_arn
+}
+
+output "tags_all" {
   description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block."
   value       = aws_cloudtrail.this.tags_all
 }

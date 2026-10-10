@@ -7,13 +7,10 @@ provider "aws" {
 module "cloudtrail" {
   source = "../..//"
 
-  name           = "CloudTrail01"
-  s3_bucket_name = "aws-cloudtrail-logs-362252864672-5f4dec40"
-  enable_logging = true
-  insight_selector = {
-    ApiCallRateInsight : true
-    ApiErrorRateInsight : true
-  }
+  name             = "amzn-demo-trails"
+  s3_bucket_name   = "amzn-s3-demo-bucket"
+  enable_logging   = true
+  insight_selector = ["ApiCallRateInsight", "ApiErrorRateInsight"]
   advanced_event_selector = [
     {
       name = "Advanced Event Selector"
@@ -40,10 +37,6 @@ module "cloudtrail" {
           equals = ["AWS::S3::Object"]
         }
       ]
-    },
+    }
   ]
-  tags = {
-    Team : "Security"
-    Owner : "Security"
-  }
 }

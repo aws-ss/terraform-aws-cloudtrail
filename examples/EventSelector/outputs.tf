@@ -1,19 +1,19 @@
-output "aws_cloudtrail_arn" {
+output "arn" {
   description = "ARN of the trail."
-  value       = module.cloudtrail.aws_cloudtrail_arn
+  value       = module.cloudtrail.arn
 }
 
-output "aws_cloudtrail_home_region" {
+output "home_region" {
   description = "Region in which the trail was created."
-  value       = module.cloudtrail.aws_cloudtrail_home_region
+  value       = module.cloudtrail.home_region
 }
 
-output "aws_cloudtrail_id" {
-  description = "Name of the trail."
-  value       = module.cloudtrail.aws_cloudtrail_id
+output "id" {
+  description = "ARN of the trail."
+  value       = module.cloudtrail.id
 }
 
-output "aws_cloudtrail_tags_all" {
+output "tags_all" {
   description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block."
-  value       = module.cloudtrail.aws_cloudtrail_tags_all
+  value       = module.cloudtrail.tags_all
 }
