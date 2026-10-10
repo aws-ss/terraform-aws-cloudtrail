@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0](https://github.com/aws-ss/terraform-aws-cloudtrail/compare/v2.1.0...v3.0.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* Rewrite module with typed variables and `event_selector` support
+
+### Features
+
+* Add `organization-delegated-admin-account` submodule ([edd1cd6](https://github.com/aws-ss/terraform-aws-cloudtrail/commit/edd1cd603eab62f3b45774334f87bbc31dac1b1b))
+* Rewrite module with typed variables and `event_selector` support ([32b77b7](https://github.com/aws-ss/terraform-aws-cloudtrail/commit/32b77b7c06f3da3d656cdefc7724cf3d5a54865d))
+
 ## [2.1.0](https://github.com/aws-ss/terraform-aws-cloudtrail/compare/v2.0.2...v2.1.0) (2025-04-30)
 
 
